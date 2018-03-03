@@ -63,6 +63,7 @@ class HomePage extends Component {
                 <h1 style={homePageStyle}>Hello from home page component</h1>
                 
                 <DRYCatDogComponent 
+                    headerText={"Hello from cat component"}
                     imageUrl={"http://www.cutestpaw.com/wp-content/uploads/2011/11/Henke.jpg"}
                     upvote={this.state.catUpvote}
                     downvote={this.state.catDownvote}
@@ -71,6 +72,7 @@ class HomePage extends Component {
                 />
 
                 <DRYCatDogComponent 
+                    headerText={"Hello from dog component"}
                     imageUrl={"http://i.ytimg.com/vi/opKg3fyqWt4/hqdefault.jpg"}
                     upvote={this.state.dogUpvote}
                     downvote={this.state.dogDownvote}

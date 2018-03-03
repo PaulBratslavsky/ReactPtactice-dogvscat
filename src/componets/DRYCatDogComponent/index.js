@@ -4,7 +4,7 @@ class DRYCatDogComponent extends Component {
     render() {
         return(
             <div style={ComponentStyle}>
-                <h3 style={ComponentHeaderStyle}>Hello From Cat Component</h3>
+                <h3 style={ComponentHeaderStyle}>{this.props.headerText}</h3>
                 <img style={{height: '400px', width: '400px'}}  src={this.props.imageUrl} alt="Cute Cat"/>
                 <button style={ComponentBottonStyle} onClick={this.props.handleDownvote}>Down Vote: {this.props.downvote}</button><button style={ComponentBottonStyle} onClick={this.props.handleUpvote}>Up Vote: {this.props.upvote}</button>
                 <h3 style={ComponentHeaderStyle}>Total Score: {this.props.downvote + this.props.upvote}</h3>
