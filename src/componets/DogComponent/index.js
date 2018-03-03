@@ -2,28 +2,6 @@ import React, { Component } from 'react';
 
 class DogComponent extends Component {
     render() {
-        
-        const dogComponentHeaderStyle = {
-            textAlign: 'center',
-            fontSize: '2rem',
-            color: '#444',
-        };
-
-        const dogComponentDivStyle = {
-            displayl: 'inline-block',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            width: '50%',
-            float: 'left',
-        };
-
-        const dogComponentBottonStyle = {
-            width: '200px',
-            margin: '5px auto',
-            fontSize: '1.8rem',
-            color: '#444',
-        };
-    
         return(
             <div style={dogComponentDivStyle}>
                 <h3 style={dogComponentHeaderStyle}>Hello From Dog Component</h3>
@@ -34,5 +12,27 @@ class DogComponent extends Component {
         );
     }
 }
+
+// BEST PRACTICE TO KEEP OUT OF RENDER
+const dogComponentHeaderStyle = {
+    textAlign: 'center',
+    fontSize: '2rem',
+    color: '#444',
+};
+
+const dogComponentDivStyle = {
+    displayl: 'inline-block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '50%',
+    float: 'left',
+};
+
+const dogComponentBottonStyle = {
+    width: '200px',
+    margin: '5px auto',
+    fontSize: '1.8rem',
+    color: '#444',
+};
 
 export default DogComponent;

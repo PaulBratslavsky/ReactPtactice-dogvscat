@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import CatComponent from '../CatComponent';
 import DogComponent from '../DogComponent';
+import DRYCatDogComponent from '../DRYCatDogComponent';
 
 class HomePage extends Component {
     constructor(props) {
@@ -57,37 +58,65 @@ class HomePage extends Component {
     }
 
     render() {
-        const homePageStyle = {
-            textAlign: 'center',
-            fontSize: '3rem',
-            color: '#eee',
-        };
-
-        const mainIndexPageStyle = {
-            textAlign: 'center',
-            background: '#444',
-            maxWidth: '960px',
-            margin: '0 auto',
-        };
         return(
             <div style={mainIndexPageStyle}>
                 <h1 style={homePageStyle}>Hello from home page component</h1>
-                <CatComponent 
-                    catUpvote={this.state.catUpvote}
-                    catDownvote={this.state.catDownvote}
-                    handleCatUpvote={this.handleCatUpvote}
-                    handleCatDownvote={this.handleCatDownvote}
+                
+                <DRYCatDogComponent 
+                    imageUrl={"http://www.cutestpaw.com/wp-content/uploads/2011/11/Henke.jpg"}
+                    upvote={this.state.catUpvote}
+                    downvote={this.state.catDownvote}
+                    handleUpvote={this.handleCatUpvote}
+                    handleDownvote={this.handleCatDownvote}
                 />
-                <DogComponent 
-                    dogUpvote={this.state.dogUpvote}
-                    dogDownvote={this.state.dogDownvote}
-                    handleDogUpvote={this.handleDogUpvote}
-                    handleDogDownvote={this.handleDogDownvote}
+
+                <DRYCatDogComponent 
+                    imageUrl={"http://i.ytimg.com/vi/opKg3fyqWt4/hqdefault.jpg"}
+                    upvote={this.state.dogUpvote}
+                    downvote={this.state.dogDownvote}
+                    handleUpvote={this.handleDogUpvote}
+                    handleDownvote={this.handleDogDownvote}
                 />
+
+                
             </div>
         );
     }
 }
 
+// BEST PRACTICE TO KEEP OUT OF RENDER METHOD
+const homePageStyle = {
+    textAlign: 'center',
+    fontSize: '3rem',
+    color: '#eee',
+};
+
+const mainIndexPageStyle = {
+    textAlign: 'center',
+    background: '#444',
+    maxWidth: '960px',
+    margin: '0 auto',
+};
+
 export default HomePage;
 
+// ALWAYS THINK ABOUT DRY CODE DONT REPEAT YOURSELF
+
+/*
+
+<CatComponent 
+    catUpvote={this.state.catUpvote}
+    catDownvote={this.state.catDownvote}
+    handleCatUpvote={this.handleCatUpvote}
+    handleCatDownvote={this.handleCatDownvote}
+/>
+<DogComponent 
+dogUpvote={this.state.dogUpvote}
+dogDownvote={this.state.dogDownvote}
+handleDogUpvote={this.handleDogUpvote}
+handleDogDownvote={this.handleDogDownvote}
+/>
+
+REPLACED WIHT MY DRYCATDOGCOMPONENT
+
+*/

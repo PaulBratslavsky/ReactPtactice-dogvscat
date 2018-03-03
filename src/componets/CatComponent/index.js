@@ -2,27 +2,6 @@ import React, { Component } from 'react';
 
 class CatComponent extends Component {
     render() {
-        const catComponentHeaderStyle = {
-            textAlign: 'center',
-            fontSize: '2rem',
-            color: '#444',
-        };
-
-        const catComponentStyle = {
-            displayl: 'inline-block',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            width: '50%',
-            float: 'left',
-        }
-
-        const catComponentBottonStyle = {
-            width: '200px',
-            margin: '5px auto',
-            fontSize: '1.8rem',
-            color: '#444',
-        };
-
         return(
             <div style={catComponentStyle}>
                 <h3 style={catComponentHeaderStyle}>Hello From Cat Component</h3>
@@ -33,5 +12,27 @@ class CatComponent extends Component {
         );
     }
 }
+
+// BEST PRACTICE TO KEEP OUT OF RENDER METHOD
+const catComponentHeaderStyle = {
+    textAlign: 'center',
+    fontSize: '2rem',
+    color: '#444',
+};
+
+const catComponentStyle = {
+    displayl: 'inline-block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '50%',
+    float: 'left',
+}
+
+const catComponentBottonStyle = {
+    width: '200px',
+    margin: '5px auto',
+    fontSize: '1.8rem',
+    color: '#444',
+};
 
 export default CatComponent;
