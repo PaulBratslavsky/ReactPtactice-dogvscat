@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import CatComponent from '../CatComponent';
-import DogComponent from '../DogComponent';
 import DRYCatDogComponent from '../DRYCatDogComponent';
 
 class HomePage extends Component {
