@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import DRYCatDogComponent from '../DRYCatDogComponent';
 
 class HomePage extends Component {
@@ -8,13 +9,16 @@ class HomePage extends Component {
         this.handleCatUpvote = this.handleCatUpvote.bind(this);
         this.handleCatDownvote = this.handleCatDownvote.bind(this);
         this.handleDogUpvote = this.handleDogUpvote.bind(this);
-        this.handleDogDownvote =this.handleDogDownvote.bind(this);
+        this.handleDogDownvote = this.handleDogDownvote.bind(this);
+        this.handleShowWinner = this.handleShowWinner.bind(this);
+        this.handleResetAll = this.handleResetAll.bind(this);
 
         this.state = {
             catUpvote: 0,
             catDownvote: 0,
             dogUpvote: 0,
             dogDownvote: 0,
+            showWinner: <h1>Hi</h1>,
         }
     }
 
@@ -54,10 +58,54 @@ class HomePage extends Component {
         });
     }
 
+    handleShowWinner() {
+        const totalScoreCat = ( this.state.catDownvote + this.state.catUpvote );
+        const totalScoreDog = ( this.state.dogDownvote + this.state.dogUpvote );
+        
+        console.log('Show winner button clicked!!!');
+        console.log(totalScoreCat, totalScoreDog);
+
+        if ( totalScoreCat > totalScoreDog ) {
+            this.setState( prevState => {
+                return {
+                    showWinner: prevState.showWinner = <h1>Cat is the Winner</h1>
+                };
+            });  
+        } else if ( totalScoreCat < totalScoreDog ) {
+            this.setState( prevState => {
+                return {
+                    showWinner: prevState.showWinner = <h1>Dog is the Winner</h1>
+                };
+            });  
+        } else {
+            this.setState( prevState => {
+                return {
+                    showWinner: prevState.showWinner = <h1>It's a tie</h1>
+                };
+            });  
+        }
+      
+    }
+
+    handleResetAll() {
+        console.log('Reset button clicked!!!');
+        this.setState( prevState => {
+            return {
+            catUpvote: prevState.catUpvote = 0,
+            catDownvote: prevState.catDownvote = 0,
+            dogUpvote: prevState.dogUpvote = 0,
+            dogDownvote: prevState.dogDownvote = 0,
+            showWinner: prevState.showWinner = <h1>Play Again</h1>,
+            };
+        });
+    }
+
     render() {
         return(
             <div style={mainIndexPageStyle}>
                 <h1 style={homePageStyle}>Hello from home page component</h1>
+
+                {this.state.showWinner}
                 
                 <DRYCatDogComponent 
                     headerText={"Hello from cat component"}
@@ -76,6 +124,10 @@ class HomePage extends Component {
                     handleUpvote={this.handleDogUpvote}
                     handleDownvote={this.handleDogDownvote}
                 />
+                <div>
+                    <button style={ComponentBottonStyle} onClick={this.handleShowWinner}>Show Winner</button>
+                    <button style={ComponentBottonStyle} onClick={this.handleResetAll}>Reset Score</button>
+                </div>
 
                 
             </div>
@@ -84,17 +136,27 @@ class HomePage extends Component {
 }
 
 // BEST PRACTICE TO KEEP OUT OF RENDER METHOD
+const ComponentBottonStyle = {
+    display: 'inline-block',
+    width: '400px',
+    height: '50px',
+    fontSize: '1.8rem',
+    color: '#444',
+    margin: '0 38px',
+};
+
 const homePageStyle = {
     textAlign: 'center',
     fontSize: '3rem',
     color: '#eee',
+    background: '#333',
 };
 
 const mainIndexPageStyle = {
     textAlign: 'center',
-    background: '#444',
     maxWidth: '960px',
     margin: '0 auto',
+    marginBottom: '150px',
 };
 
 export default HomePage;
